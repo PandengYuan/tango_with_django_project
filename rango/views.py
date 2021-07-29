@@ -50,7 +50,7 @@ def add_category(request):
 
             form.save(commit=True)
 
-            return redirect('/rango/')
+            return redirect(reverse('rango:index'))
         else:
 
             print(form.errors)
@@ -65,7 +65,7 @@ def add_page(request, category_name_slug):
         category = None
     # You cannot add a page to a Category that does not exist...
     if category is None:
-        return redirect('/rango/')
+        return redirect(reverse('rango:index'))
 
     form = PageForm()
 
@@ -88,5 +88,7 @@ def add_page(request, category_name_slug):
 
 
 def about(request):
-
-    return render(request, 'rango/about.html')
+    print(request.method)
+    # prints out the user name, if no one is logged in it prints `AnonymousUser`
+    print(request.user)
+    return render(request, 'rango/about.html', {})
