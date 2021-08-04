@@ -1,0 +1,20 @@
+{% extends 'rango/userbase.html' %}
+{% load staticfiles %}
+
+{% block title_block %}
+    Homepage
+{% endblock %}
+
+{% block userbase_body_block %}
+ 
+    <div>
+        <ul>
+            <li><a href="{% url 'rango:buyer_my_account' %}">My Account</a></li>
+            <li><a href="{% url 'rango:collections' %}">Collections</a></li>
+            <li><a href="{% url 'rango:cart' %}">Cart</a></li>
+            <li><a href="{% url 'rango:order_history' %}">Order History</a></li>
+            <li><a href="{% url 'rango:payment' %}">payment</a></li>
+        </ul>
+    </div>
+    
+{% endblock %}

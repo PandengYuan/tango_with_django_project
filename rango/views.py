@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.shortcuts import redirect
 from django.urls import reverse
 from rango.models import Category, Page
-from rango.forms import CategoryForm, PageForm, UserForm, UserProfileForm
+from rango.forms import CategoryForm, PageForm, UserForm, UserProfileForm, ProductForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from datetime import datetime
@@ -29,6 +29,8 @@ def show_category(request, category_name_slug):
 
     context_dict = {}
 
+    category_list = Category.objects
+
     try:
         category = Category.objects.get(slug=category_name_slug)
 
@@ -36,10 +38,12 @@ def show_category(request, category_name_slug):
 
         context_dict['pages'] = pages
         context_dict['category'] = category
+        context_dict['categories'] = category_list
     except Category.DoesNotExist:
 
         context_dict['category'] = None
         context_dict['pages'] = None
+        context_dict['categories'] = None
 
     return render(request, 'rango/category.html', context=context_dict)
 
@@ -61,6 +65,32 @@ def add_category(request):
             print(form.errors)
 
     return render(request, 'rango/add_category.html', {'form': form})
+
+
+
+@login_required
+def upload_product(request):
+   
+    form = ProductForm()
+
+    if request.method == 'POST':
+        form = ProductForm(request.POST)
+
+        if form.is_valid():
+
+            product = form.save(commit=True)
+            product.category = 'Toys'
+            product.sales = 0
+            product.save()
+
+            return redirect(reverse('rango:seller_my_account'))
+        else:
+            print(form.errors)
+
+    context_dict = {'form': form}
+    return render(request, 'rango/upload_product.html', {'form': form})
+
+
 
 @login_required
 def add_page(request, category_name_slug):
@@ -91,14 +121,6 @@ def add_page(request, category_name_slug):
     context_dict = {'form': form, 'category': category}
     return render(request, 'rango/add_page.html', context=context_dict)
 
-
-def about(request):
-    context_dict = {}
-    visitor_cookie_handler(request)
-    context_dict['visits'] = request.session['visits']
-    return render(request, 'rango/about.html', context=context_dict)
-
-
 def register(request):
     registered = False
 
@@ -128,6 +150,7 @@ def register(request):
     return render(request, 'rango/register.html', context={'user_form': user_form, 'profile_form': profile_form, 'registered': registered})
 
 
+
 def user_login(request):
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -150,7 +173,10 @@ def user_login(request):
 
 @login_required
 def restricted(request):
-    return render(request, 'rango/restricted.html')
+    if request.user.userprofile.usertype == 'Buyer':
+        return render(request, 'rango/about.html')
+    else:
+        return render(request, 'rango/restricted.html')
 
 
 @login_required
@@ -177,3 +203,47 @@ def visitor_cookie_handler(request):
         request.session['last_visit'] = last_visit_cookie
     
     request.session['visits'] = visits
+
+def buyer_my_account(request):
+        return render(request, 'rango/buyer_my_account.html')
+
+def collections(request):
+        return render(request, 'rango/collections.html')
+
+def cart(request):
+        return render(request, 'rango/cart.html')
+
+def order_history(request):
+        return render(request, 'rango/order_history.html')
+
+def payment(request):
+        return render(request, 'rango/payment.html')
+
+def seller_my_account(request):
+        return render(request, 'rango/seller_my_account.html')
+
+
+
+def remove_product (request):
+        return render(request, 'rango/remove_product.html')
+
+def products_and_sales (request):
+        return render(request, 'rango/products_and_sales.html')
+
+def product_search (request):
+        return render(request, 'rango/product_search.html')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,4 +1,5 @@
 {% extends 'rango/base.html' %}
+{% load rango_template_tags %}
 {% load staticfiles %}
 
 {% block title_block %}
@@ -11,7 +12,6 @@
 
 {% block body_block %}
     {% if category %}
-        <h1>{{ category.name }}</h1>
         {% if pages %}
         <ul>
             {% for page in pages %}
@@ -29,4 +29,11 @@
     {% else %}
         The specified category does not exist.
     {% endif %}
+
+    <div>
+        {% block sidebar_block %}
+            {% get_category_list category %}
+        {% endblock %}
+    </div>
+
 {% endblock %}

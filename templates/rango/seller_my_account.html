@@ -1,0 +1,19 @@
+{% extends 'rango/userbase.html' %}
+{% load staticfiles %}
+
+{% block title_block %}
+    Homepage
+{% endblock %}
+
+{% block userbase_body_block %}
+ 
+    <div>
+        <ul>
+            <li><a href="{% url 'rango:seller_my_account' %}">My Account</a></li>
+            <li><a href="{% url 'rango:upload_product' %}">Upload Product</a></li>
+            <li><a href="{% url 'rango:remove_product' %}">Remove Product</a></li>
+            <li><a href="{% url 'rango:products_and_sales' %}">Products And Sales</a></li>
+        </ul>
+    </div>
+    
+{% endblock %}

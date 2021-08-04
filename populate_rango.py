@@ -4,7 +4,7 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE',
 
 import django
 django.setup()
-from rango.models import Category, Page
+from rango.models import Category, Page, Product
 
 
 
@@ -24,31 +24,52 @@ from rango.models import Category, Page
 
 def populate():
 
-    python_pages = [
-		{'title': 'Official Python Tutorial', 'views': 110, 
+    electronic_device = [
+		{'title': 'Computer', 'views': 110, 
 		 'url':'http://docs.python.org/3/tutorial/'},
-		{'title':'How to Think like a Computer Scientist', 'views': 106, 
+		{'title':'Phone', 'views': 106, 
 		 'url':'http://www.greenteapress.com/thinkpython/'},
-		{'title':'Learn Python in 10 Minutes', 'views': 109, 
+		{'title':'Tablet', 'views': 109, 
 		 'url':'http://www.korokithakis.net/tutorials/python/'} ]
 
-    django_pages = [
-		{'title':'Official Django Tutorial', 'views': 105, 
+    clothing = [
+		{'title':'Jacket', 'views': 105, 
 		 'url':'https://docs.djangoproject.com/en/2.1/intro/tutorial01/'},
-		{'title':'Django Rocks', 'views': 104, 
+		{'title':'Dress', 'views': 104, 
 		 'url':'http://www.djangorocks.com/'},
-		{'title':'How to Tango with Django', 'views': 108, 
+		{'title':'Jeans', 'views': 108, 
 		 'url':'http://www.tangowithdjango.com/'} ]
     
-    other_pages = [
-		{'title':'Bottle', 'views': 103, 
+    cosmetics = [
+		{'title':'Lipstick', 'views': 103, 
 		'url':'http://bottlepy.org/docs/dev/'},
-		{'title':'Flask', 'views': 107, 
+		{'title':'Eye Shadow', 'views': 107, 
+		'url':'http://flask.pocoo.org'},
+		{'title':'Foundation', 'views': 107, 
 		'url':'http://flask.pocoo.org'} ]
 
-    cats = {'Python': {'pages': python_pages, 'views': 128, 'likes': 64},
-        'Django': {'pages': django_pages, 'views': 64, 'likes': 32},
-        'Other Frameworks': {'pages': other_pages, 'views': 32, 'likes': 16} }
+    toys = [
+		{'title': 'Doll', 'views': 110, 
+		 'url':'http://docs.python.org/3/tutorial/'},
+		{'title':'Teddy', 'views': 106, 
+		 'url':'http://www.greenteapress.com/thinkpython/'} ]
+
+    groceries = [
+		{'title': 'Toothbrush', 'views': 110, 
+		 'url':'http://docs.python.org/3/tutorial/'},
+		{'title':'Shampoo', 'views': 106, 
+		 'url':'http://www.greenteapress.com/thinkpython/'},
+		{'title':'Candy', 'views': 109, 
+		 'url':'http://www.korokithakis.net/tutorials/python/'} ]
+
+
+
+    cats = {'Electronic Device': {'pages': electronic_device, 'views': 128, 'likes': 64},
+        'Clothing': {'pages': clothing, 'views': 64, 'likes': 32},
+        'Cosmetics': {'pages': cosmetics, 'views': 32, 'likes': 16}, 
+        'Toys': {'pages': toys, 'views': 64, 'likes': 32},
+        'Groceries': {'pages': groceries, 'views': 32, 'likes': 16}   
+        }
 
 
     for cat, cat_data in cats.items():
