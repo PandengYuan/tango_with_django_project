@@ -23,4 +23,5 @@ urlpatterns = [
     path('remove-product/', views.remove_product, name='remove_product'),
     path('products-and-sales/', views.products_and_sales, name='products_and_sales'),
     path('product-search/', views.product_search, name='product_search'),
+    path('product/<slug:product_name_slug>/', views.show_product, name='show_product'),
 ]

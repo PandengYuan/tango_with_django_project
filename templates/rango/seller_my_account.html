@@ -8,6 +8,23 @@
 {% block userbase_body_block %}
  
     <div>
+        <span>Profile : </span> <img src="{{ MEDIA_URL }}{{user.userprofile.picture}}" alt="Picture of Buyer" />
+    </div>
+
+    <div>
+        <span>Username : </span> <span>{{user.username}}</span><br/>
+        <span>Email : </span> <span>{{user.email}}</span> <br/>
+        <span>Address : </span> <span>{{user.userprofile.address}}</span> 
+    </div>
+
+    <div>
+        <span>User Type : </span> <span>{{user.userprofile.usertype}}</span> 
+    </div>
+
+    
+    <hr />
+
+    <div>
         <ul>
             <li><a href="{% url 'rango:seller_my_account' %}">My Account</a></li>
             <li><a href="{% url 'rango:upload_product' %}">Upload Product</a></li>

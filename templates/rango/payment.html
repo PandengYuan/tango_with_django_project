@@ -1,1 +1,24 @@
-payment
+{% extends 'rango/buyer_base.html' %}
+{% load staticfiles %}
+
+{% block title_block %}
+    Payment
+{% endblock %}
+
+{% block buyerbase_body_block %}
+ 
+    <div>
+        User Name : {{user.username}}<br />
+        Email : {{user.email}}<br />
+        Address : {{user.userprofile.address}}<br />
+        Price : ￡ 200<br />
+    </div>
+
+    <div>
+        Card Number : <input type="text" /><br />
+        CVV: <input type="text"  /><br />
+        Phone Number : <input type="text"  /><br />
+        <input type="submit" value="Submit" /><br />
+    </div>
+    
+{% endblock %}

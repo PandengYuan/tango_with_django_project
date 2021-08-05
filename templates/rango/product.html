@@ -1,0 +1,38 @@
+{% extends 'rango/userbase.html' %}
+{% load rango_template_tags %}
+{% load staticfiles %}
+
+{% block title_block %}
+    {% if category %}
+        {{ category.name }}
+    {% else %}
+        Unknown Category
+    {% endif %}
+{% endblock %}
+
+{% block userbase_body_block %}
+    {% if product %}
+        <div>
+            <img src="{{ MEDIA_URL }}{{ product.picture}}" alt="Picture of Product" /><br/>
+            <span>Name : {{ product.name }}</span><br/>
+            <input type="submit" value="Collect" /><br/>
+
+            <span>Description : {{product.description}}</span><br/>
+            <span>price : ￡ {{product.price}}</span><br/>
+
+            <input type="submit" value="Add a review" />
+            <input type="text" name="review" value="" size="80" height="40" />
+            <input type="submit" value="Submit Review" /><br/>
+
+            <img src="{% static 'images/minus.png' %}" alt="Picture of Minus_icon" /> 
+            <span>Quantity : </span>
+            <img src="{% static 'images/plus.png' %}" alt="Picture of Plus_icon" /> 
+            <input type="submit" value="Add to Basket" /> <input type="submit" value="Buy Now" />
+
+        </div>
+    {% else %}
+        The specified product does not exist.
+    {% endif %}
+
+
+{% endblock %}

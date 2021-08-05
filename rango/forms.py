@@ -13,19 +13,18 @@ class CategoryForm(forms.ModelForm):
         fields = ('name',)
 
 class ProductForm(forms.ModelForm):
-    # id = models.CharField(max_length=CHAR_MAX_LENGTH, primary_key=True)
-    img = forms.ImageField()
-    # category = forms.CharField(max_length=Product.CHAR_MAX_LENGTH, help_text="Please enter the category of the product.")
+    id = forms.CharField(max_length=Product.CHAR_MAX_LENGTH, help_text="Please input the ID of the product.")
+    picture = forms.ImageField(required=True, help_text="Please upload the picture of the product.")
     category = forms.ModelChoiceField(queryset=Category.objects.all(), required=True, empty_label=None, initial="--", help_text="Please enter the category of the product.")
     name = forms.CharField(max_length=Product.CHAR_MAX_LENGTH, help_text="Please enter the name of the product.")
-    description = forms.CharField(max_length=Product.DESCRIPTION_MAX_LENGTH, help_text="Please enter the description of the product.")
+    description = forms.FileField(required=True, help_text="Please upload the description file of the product.")
     price = forms.FloatField(help_text="Please enter the price of the product.")
     sales = forms.IntegerField(widget=forms.HiddenInput(), initial=0)
 
     class Meta:
         model = Product
 
-        fields = ('img','category', 'name', 'description', 'price')
+        fields = ('id','picture','category', 'name', 'description', 'price')
         # or specify the fields to include (don't include the category field).
         #fields = ('title', 'url', 'views')
 

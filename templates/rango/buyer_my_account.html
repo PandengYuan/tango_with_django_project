@@ -1,20 +1,24 @@
-{% extends 'rango/userbase.html' %}
+{% extends 'rango/buyer_base.html' %}
 {% load staticfiles %}
 
 {% block title_block %}
-    Homepage
+    Buyer Account
 {% endblock %}
 
-{% block userbase_body_block %}
+{% block buyerbase_body_block %}
  
     <div>
-        <ul>
-            <li><a href="{% url 'rango:buyer_my_account' %}">My Account</a></li>
-            <li><a href="{% url 'rango:collections' %}">Collections</a></li>
-            <li><a href="{% url 'rango:cart' %}">Cart</a></li>
-            <li><a href="{% url 'rango:order_history' %}">Order History</a></li>
-            <li><a href="{% url 'rango:payment' %}">payment</a></li>
-        </ul>
+        Profile:<img src="{{ MEDIA_URL }}{{user.userprofile.picture}}" alt="Picture of Buyer" />
+    </div>
+
+    <div>
+        Username: {{user.username}}<br/>
+        Email:{{user.email}}<br/>
+        Address:{{user.userprofile.address}}
+    </div>
+
+    <div>
+        User Type: {{user.userprofile.usertype}}
     </div>
     
 {% endblock %}

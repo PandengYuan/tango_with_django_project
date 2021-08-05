@@ -1,4 +1,4 @@
-{% extends 'rango/base.html' %}
+{% extends 'rango/userbase.html' %}
 {% load rango_template_tags %}
 {% load staticfiles %}
 
@@ -10,25 +10,38 @@
     {% endif %}
 {% endblock %}
 
-{% block body_block %}
+
+
+{% block userbase_body_block %}
+
+
     {% if category %}
-        {% if pages %}
+        {% if products %}
         <ul>
-            {% for page in pages %}
-            <li><a href="{{ page.url }}">{{ page.title }}</a></li>
+            {% for product in products %}
+            <li>
+                <a href="{% url 'rango:show_product' product.slug %}"> <img src="{{ MEDIA_URL }}{{ product.picture}}" alt="Picture of Product" />  </a><br/>
+                <a href="{% url 'rango:show_product' product.slug %}">Name : {{ product.name }}</a><br/>
+                <a href="{% url 'rango:show_product' product.slug %}">Name : {{ product.description }}</a><br/>
+                <span>Price : {{ product.price }}</span>
+
+            </li>
+            
             {% endfor %}
         </ul>
         {% else %}
-        <strong>No pages currently in category.</strong>
+        <strong>No product currently in category.</strong>
         {% endif %}
 
-        {% if user.is_authenticated %}
-        <a href="{% url 'rango:add_page' category.slug %}">Add Page</a> <br />
-        {% endif %}
     
     {% else %}
         The specified category does not exist.
     {% endif %}
+
+
+
+
+    <hr />
 
     <div>
         {% block sidebar_block %}
