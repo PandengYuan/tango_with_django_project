@@ -1,4 +1,4 @@
-{% extends 'rango/userbase.html' %}
+{% extends 'rango/buyer_base.html' %}
 {% load rango_template_tags %}
 {% load staticfiles %}
 
@@ -10,43 +10,47 @@
     {% endif %}
 {% endblock %}
 
-
-
 {% block userbase_body_block %}
-
-
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/category.css' %}" type="text/css" media ='all'>
     {% if category %}
         {% if products %}
-        <ul>
+        <ul class = "list1">
             {% for product in products %}
-            <li>
-                <a href="{% url 'rango:show_product' product.slug %}"> <img src="{{ MEDIA_URL }}{{ product.picture}}" alt="Picture of Product" />  </a><br/>
-                <a href="{% url 'rango:show_product' product.slug %}">Name : {{ product.name }}</a><br/>
-                <a href="{% url 'rango:show_product' product.slug %}">Name : {{ product.description }}</a><br/>
-                <span>Price : {{ product.price }}</span>
-
+            <li >
+                <a href="{% url 'rango:show_product' product.slug %}"> <img src="{{ MEDIA_URL }}{{ product.picture}}" alt="Picture of Product" class = 'proimg'/> </a><br/>
+                <a href="{% url 'rango:show_product' product.slug %}" class='name'>{{ product.name }}</a><br/>
+                <a href="{% url 'rango:show_product' product.slug %}" class="description">{{ product.description }}</a><br/>
+                <a class='price'>£：{{ product.price }}</a>
+                <hr />
             </li>
-            
             {% endfor %}
         </ul>
         {% else %}
         <strong>No product currently in category.</strong>
         {% endif %}
-
-    
     {% else %}
         The specified category does not exist.
     {% endif %}
-
-
-
-
-    <hr />
-
-    <div>
-        {% block sidebar_block %}
-            {% get_category_list category %}
-        {% endblock %}
-    </div>
+   
+    <div class='navigation'>
+        {% if categories %}
+            {% for c in categories %}
+                {% if c == category %}
+                    <li class = 'list'>
+                    <strong>
+                            <a href="{% url 'rango:show_category' c.slug %}" >{{ c.name }}</a>
+                     </strong>
+                </li>
+                {% else %}
+                    <li class = 'list'>
+                        <a href="{% url 'rango:show_category' c.slug %}" >{{ c.name }}</a>
+                    </li>
+                {% endif %}
+            {% endfor %}
+        {% else %}
+            <li class = 'list'><strong>There are no categories present.</strong></li>
+        {% endif %}
+    </div> 
 
 {% endblock %}

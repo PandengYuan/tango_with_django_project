@@ -6,20 +6,24 @@
 {% endblock %}
 
 {% block userbase_body_block %}
- 
-
-
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}" type="text/css" media ='all'>
+    <div class ='search'>
+        <input type="search" class ='searchinput'/>
+        <a href="{% url 'rango:product_search' %}" class ='searchbutton'><button type="search" >Search</button></a>
+    </div>
     <div>
-        <div>
+        <div class="five">
             <img src="{% static 'images/top_five_categories_icon.png' %}" alt="Picture of Category_icon" /> 
-            Top Five Categories
+            <div class="top"><h3>Top Five Categories</h3></div>
         </div>
         {% if categories %}
             <ul>
             {% for category in categories %}
                 <li>
-                    <a href="{% url 'rango:show_category' category.slug %}">{{ category.name }}</a>
-                    <a href="{% url 'rango:show_category' category.slug %}"> <img src="{{ MEDIA_URL }}{{ category.picture}}" alt="Picture of Category" />  </a>
+                    <!-- <a href="{% url 'rango:show_category' category.slug %}" >{{ category.name }}</a> -->
+                    <a href="{% url 'rango:show_category' category.slug %}" > <img src="{{ MEDIA_URL }}{{ category.picture}}" alt="Picture of Category" class="category"/>  </a>
+                    <span class="c_name"> <a href="{% url 'rango:show_category' category.slug %}" class="cat">{{ category.name }}</a></span>
                 </li>
             {% endfor %}
             </ul>
@@ -29,16 +33,17 @@
     </div>
 
     <div>
-        <div>
+        <div class="best">
             <img src="{% static 'images/best_seller_icon.png' %}" alt="Picture of BestSeller_icon" /> 
-            Best Seller
+            <h3>Best Seller</h3>
         </div>
         {% if products %}
             <ul>
             {% for product in products %}
                 <li>
-                    <a href="{% url 'rango:show_product' product.slug %}">{{ product.name }}</a>
-                    <a href="{% url 'rango:show_product' product.slug %}"> <img src="{{ MEDIA_URL }}{{ product.picture}}" alt="Picture of Product" />  </a>
+                   
+                    <a href="{% url 'rango:show_product' product.slug %}"> <img src="{{ MEDIA_URL }}{{ product.picture}}" alt="Picture of Product" class="category"/>  </a>
+                    <span class="c_name"></span><a href="{% url 'rango:show_product' product.slug %}">{{ product.name }}</a></span>
                 </li>
             {% endfor %}
             </ul>

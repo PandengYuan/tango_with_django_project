@@ -1,0 +1,155 @@
+body {
+    background-image: url("../images/background.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    margin:0;
+	padding:0;
+
+}
+
+#header{
+
+    position:fixed;
+    background-color:#9e8d73;
+    width:100%;
+    padding:0%,0%,80%,0%;
+    margin-top:0%;
+    margin-left:0%;  
+    z-index:9999;  
+}
+
+.logo{
+    width:65px;
+    height:65px;
+    margin: 8px;
+}
+
+.title{
+    position:absolute;
+    left:120px;
+    top:30px;
+    color:#f0d9b6;
+    font-size:16px;
+    font-weight: bold;
+}
+
+.homepage{
+    position:absolute;
+    left:320px ;
+    top:20px;
+}
+
+.home{
+    position:relative;
+    font-size:16px;
+    bottom:10px;
+    color:black;
+    font-weight: bold;
+}
+
+
+    
+.searchinput{
+    position:fixed;
+    top:30px;
+    left:500px;
+    width:400px;
+    height:30px;
+    border-radius:12px;
+    border:1px;
+}
+.searchimg{
+    position:fixed;
+    left:920px;
+    font-size:16px;
+   
+    top:25px;
+    
+}
+    
+.button_login {
+    background-color: #c1ac59; 
+    color: #6f6d6d;
+    padding: 13px 40px;
+    padding-left: 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 25px;
+    border: 1px solid black;
+    position:relative;
+    right:15px;
+    color:white;
+    font-size: 16px;
+    font-weight: bold;
+     padding-left:40px;
+     
+}
+.button_reg {
+    background-color: #c1ac59; 
+    color: rgb(104, 98, 98);
+    padding: 13px 40px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 25px;
+    border: 1px solid black;
+    font-size: 16px;
+    font-weight: bold;
+    padding-left:25px;
+
+}
+
+.logout{
+    background-color: #c1ac59; 
+    color: #6f6d6d;
+    padding: 13px 40px;
+    padding-left: 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 25px;
+    border: 1px solid black;
+    position:absolute;
+    right:85px;
+    top:-5px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+a:link,a:visited{
+    color:black;
+}
+img {
+    width: 40px;
+    height:40px;
+    margin-right:20px;
+
+}
+.cart{
+    position:relative;
+    bottom:0px;
+    right:160px;
+   
+}
+.notuser{
+    position:fixed;
+    right:42px;
+    top:20px;
+}
+.user_s{
+    position:fixed;
+    right:42px;
+    top:25px;
+}
+.user_b{
+    position:fixed;
+    right:42px;
+    top:30px;
+   
+}
+
+

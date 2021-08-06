@@ -6,19 +6,37 @@
 {% endblock %}
 
 {% block seller_base_body_block %}
+<<<<<<< HEAD
+=======
+<meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/account.css' %}" type="text/css" media ='all'>
+>>>>>>> ac3171348ed73ab466beedb3109f1be23171e854
  
-    <div>
-        <span>Profile : </span> <img src="{{ MEDIA_URL }}{{user.userprofile.picture}}" alt="Picture of Buyer" />
+    <div class="userprofile">
+        <img src="{{ MEDIA_URL }}{{user.userprofile.picture}}" alt="Picture of Buyer" class="uimg"/>
     </div>
 
-    <div>
-        <span>Username : </span> <span>{{user.username}}</span><br/>
-        <span>Email : </span> <span>{{user.email}}</span> <br/>
-        <span>Address : </span> <span>{{user.userprofile.address}}</span> 
+    <div class="br1">
+        <a></a>
     </div>
 
-    <div>
-        <span>User Type : </span> <span>{{user.userprofile.usertype}}</span> 
+    <div class="uname">
+        <ul class="uea">
+            <li><a>Username:  {{user.username}}</a></li>
+            <li><a>Email:  {{user.email}}</a></li>
+            <li><a>Address:  {{user.userprofile.address}}</a></li>
+            </ul>
     </div>
 
+<<<<<<< HEAD
+=======
+    <div class="br2">
+        <a></a>
+    </div>
+
+    <div class="utype">
+        User Type:  {{user.userprofile.usertype}}
+    </div>
+
+>>>>>>> ac3171348ed73ab466beedb3109f1be23171e854
 {% endblock %}

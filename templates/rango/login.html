@@ -6,12 +6,23 @@
 {% endblock %}
 
 {% block body_block %}
-<form id="login_form" method="post" action="{% url 'rango:login' %}">
-    {% csrf_token %}
-    Username: <input type="text" name="username" value="" size="50" />
-    <br />
-    Password: <input type="password" name="password" value="" size="50" />
-    <br />
-    <input type="submit" value="login" />
-</form>
+<meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/login.css' %}" type="text/css" media ='all'>
+    <div class ='form'>
+    <form id="login_form" method="post" action="{% url 'rango:login' %}">
+        {% csrf_token %}
+        <a class="loginname">Login</a><br />
+        <div class ='user'>
+            <a>Username: </a>
+            <input type="text" name="username" value="" size="30" class='userinput' />
+            <br />
+        </div>
+        <div class ='password'>
+            <a>Password:</a> 
+            <input type="password" name="password" value="" size="30" class='passwordinput'/>
+            <br />
+        </div>
+        <input type="submit" value="login" class ='login'/>
+    </form>
+</div>
 {% endblock %}
