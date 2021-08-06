@@ -3,10 +3,10 @@
 {% load staticfiles %}
 
 {% block title_block %}
-    {% if category %}
-        {{ category.name }}
+    {% if product %}
+        {{ product.name }}
     {% else %}
-        Unknown Category
+        Unknown Product
     {% endif %}
 {% endblock %}
 

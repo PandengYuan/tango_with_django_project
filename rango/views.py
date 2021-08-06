@@ -2,8 +2,8 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.shortcuts import redirect
 from django.urls import reverse
-from rango.models import Category, Product
-from rango.forms import CategoryForm, PageForm, UserForm, UserProfileForm, ProductForm
+from rango.models import Category, Product, Cart
+from rango.forms import CategoryForm, UserForm, UserProfileForm, ProductForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from datetime import datetime
@@ -21,7 +21,6 @@ def index(request):
     # context_dict['visits'] = request.session['visits']
     response = render(request, 'rango/index.html', context=context_dict)
     return response
-
 
 
 def show_category(request, category_name_slug):
@@ -55,12 +54,12 @@ def show_product(request, product_name_slug):
     product_list = Product.objects
 
     try:
-        prodcut = Product.objects.get(slug=product_name_slug)
+        product = Product.objects.get(slug=product_name_slug)
 
         # products = Product.objects.filter(category=category)
 
         # context_dict['products'] = products
-        context_dict['product'] = prodcut
+        context_dict['product'] = product
         # context_dict['products'] = category_list
     except Category.DoesNotExist:
 
@@ -113,36 +112,6 @@ def upload_product(request):
     return render(request, 'rango/upload_product.html', {'form': form})
 
 
-
-@login_required
-def add_page(request, category_name_slug):
-    try:
-        category = Category.objects.get(slug=category_name_slug)
-    except Category.DoesNotExist:
-        category = None
-    # You cannot add a page to a Category that does not exist...
-    if category is None:
-        return redirect(reverse('rango:index'))
-
-    form = PageForm()
-
-    if request.method == 'POST':
-        form = PageForm(request.POST)
-
-        if form.is_valid():
-            if category:
-                page = form.save(commit=False)
-                page.category = category
-                page.views = 0
-                page.save()
-
-                return redirect(reverse('rango:show_category', kwargs={'category_name_slug': category_name_slug}))
-        else:
-            print(form.errors)
-
-    context_dict = {'form': form, 'category': category}
-    return render(request, 'rango/add_page.html', context=context_dict)
-
 def register(request):
     registered = False
 
@@ -170,7 +139,6 @@ def register(request):
         profile_form = UserProfileForm()
     
     return render(request, 'rango/register.html', context={'user_form': user_form, 'profile_form': profile_form, 'registered': registered})
-
 
 
 def user_login(request):
@@ -224,44 +192,50 @@ def visitor_cookie_handler(request):
     request.session['visits'] = visits
 
 
-
-
 @login_required
 def buyer_my_account(request):
-    context_dict = {'user': request.user}
-    return render(request, 'rango/buyer_my_account.html', context=context_dict)
+    return render(request, 'rango/buyer_my_account.html')
+
 
 @login_required
-def collections(request):
-        return render(request, 'rango/collections.html')
+def seller_my_account(request):
+    return render(request, 'rango/seller_my_account.html')
+
 
 @login_required
 def cart(request):
-        return render(request, 'rango/cart.html')
+    products = Product.objects.all()
+    carts = Cart.objects.all()
+    username = request.user.username
+    product_list = []
+    for item in carts:
+        if item.buyer_name == username:
+            for p in products:
+                if item.product_name == p.name:
+                    product_list.append(p)
 
-@login_required
-def order_history(request):
-        return render(request, 'rango/order_history.html')
+    context_dict = {'products': product_list}
+    return render(request, 'rango/cart.html',context=context_dict)
+
 
 @login_required
 def payment(request):
     context_dict = {'user': request.user}
     return render(request, 'rango/payment.html', context=context_dict)
 
+
 @login_required
-def seller_my_account(request):
-        return render(request, 'rango/seller_my_account.html')
-
-
-
 def remove_product (request):
-        return render(request, 'rango/remove_product.html')
+    context_dict = {}
+    context_dict['products'] = Product.objects.all()
+    return render(request, 'rango/remove_product.html',context=context_dict)
 
-def products_and_sales (request):
-        return render(request, 'rango/products_and_sales.html')
 
 def product_search (request):
-        return render(request, 'rango/product_search.html')
+    context_dict = {}
+    context_dict['products'] = Product.objects.all()
+    context_dict['categories'] = Category.objects.all()
+    return render(request, 'rango/product_search.html', context=context_dict)
 
 
 

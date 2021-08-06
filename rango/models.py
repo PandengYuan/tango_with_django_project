@@ -40,59 +40,25 @@ class Product(models.Model):
         return self.name
 
 
-class Collection(models.Model):
-    CHAR_MAX_LENGTH = 128
-    buyer_name = models.CharField(max_length=CHAR_MAX_LENGTH,default='')
-    product_name = models.CharField(max_length=CHAR_MAX_LENGTH,default='')
-
-    def __str__(self):
-        return self.buyer_name+self.product_name
-
         
 class Cart(models.Model):
-    buyerid = models.ForeignKey(Category, on_delete=models.CASCADE)
-    productid = models.ForeignKey(Product, on_delete=models.CASCADE)
+    CHAR_MAX_LENGTH = 128
+    buyer_name = models.CharField(max_length=CHAR_MAX_LENGTH, default='')
+    product_name = models.CharField(max_length=CHAR_MAX_LENGTH, default='')
 
     def __str__(self):
-        return self.name
+        return self.buyer_name + self.product_name
+
 
 class Review(models.Model):
     DESCRIPTION_MAX_LENGTH = 1000
-    buyerid = models.ForeignKey(Category, on_delete=models.CASCADE)
-    productid = models.ForeignKey(Product, on_delete=models.CASCADE)
-    content = models.CharField(max_length=DESCRIPTION_MAX_LENGTH)
-
-    def __str__(self):
-        return self.name
-
-
-class Order(models.Model):
     CHAR_MAX_LENGTH = 128
-    buyerid = models.ForeignKey(Category, on_delete=models.CASCADE)
-    productid = models.ForeignKey(Product, on_delete=models.CASCADE)
-    orderid = models.CharField(max_length=CHAR_MAX_LENGTH, primary_key=True)
+    buyer_name = models.CharField(max_length=CHAR_MAX_LENGTH, default='')
+    product_name = models.CharField(max_length=CHAR_MAX_LENGTH, default='')
+    content = models.TextField(default='')
 
     def __str__(self):
         return self.name
-
-class UploadProduct(models.Model):
-    selleriid = models.ForeignKey(Category, on_delete=models.CASCADE)
-    productid = models.ForeignKey(Product, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return self.name
-
-
-class Page(models.Model):
-    TITLE_MAX_LENGTH = 128
-    URL_MAX_LENGTH = 200
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    title = models.CharField(max_length=TITLE_MAX_LENGTH)
-    url = models.URLField()
-    views = models.IntegerField(default=0)
-
-    def __str__(self):
-        return self.title
 
 
 class UserProfile(models.Model):

@@ -1,11 +1,11 @@
-{% extends 'rango/userbase.html' %}
+{% extends 'rango/seller_base.html' %}
 {% load staticfiles %}
 
 {% block title_block %}
     Upload Product
 {% endblock %}
 
-{% block userbase_body_block %}
+{% block seller_base_body_block %}
     <form id="upload_product_form" method="post" action="{% url 'rango:upload_product' %}" enctype="multipart/form-data">
         {% csrf_token %}
         {% for hidden in form.hidden_fields %}

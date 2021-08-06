@@ -6,7 +6,34 @@
 {% endblock %}
 
 {% block buyerbase_body_block %}
- 
-    cart
+
+    <div>
+
+        {% if products %}
+            <ul>
+                {% for p in products %}
+
+                <li>
+                    <input type="checkbox"  checkbox="checkbox"/>
+                    <a href="{% url 'rango:show_product' p.slug %}"> <img src="{{ MEDIA_URL }}{{ p.picture}}" alt="Picture of Product" />  </a><br/>
+                    <a href="{% url 'rango:show_product' p.slug %}">Name : {{ p.name }}</a><br/>
+                    <a href="{% url 'rango:show_product' p.slug %}">Description : {{ p.description }}</a><br/>
+                    <span>Price : ￡ {{p.price}}</span><br/>
     
+                </li>
+
+                {% endfor %}
+            </ul>
+            
+        {% else %}
+
+            <span>There is no product in your cart.</span>
+
+        {% endif %}
+
+            <span>Total : ￡</span><span>153.94</span>
+            <input type="submit" value="Check Out" />
+        
+    </div>
+
 {% endblock %}
