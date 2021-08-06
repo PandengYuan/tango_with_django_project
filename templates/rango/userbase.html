@@ -6,44 +6,39 @@
 
 {% block body_block %}
 
-    <div>
-        <input type="search" />
-        <a href="{% url 'rango:product_search' %}"><input type="submit" /></a>
+    <!-- <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/userbase.css' %}" type="text/css" media ='all'>
+    <div class ='search'>
+        <input type="search" class ='searchinput'/>
+        <a href="{% url 'rango:product_search' %}" class ='searchbutton'><button type="search" >Search</button></a>
     </div>
-
-    <div>
+    <div class = 'nav'>
         {% if user.is_authenticated %}
 
             {% if user.userprofile.usertype == 'Buyer' %}
-                <div>
-                    <a href="{% url 'rango:cart' %}"><img src="{% static 'images/cart_icon.png' %}" alt="Picture of Cart_icon" /></a>
-                </div>
-
-                <div>
-                    <a href="{% url 'rango:logout' %}">Logout</a>
-                </div>
-
-                <div>
-                    <a href="{% url 'rango:buyer_my_account' %}"><img src="{% static 'images/user_icon.png' %}" alt="Picture of User_icon" /></a> 
-                </div>
+                <div class="user_b">  
+                    <div class="logout">
+                        <a href="{% url 'rango:logout' %}" >Logout</a>
+                    </div> 
+                    <a href="{% url 'rango:cart' %}" ><img src="{% static 'images/cart_icon.png' %}" alt="Picture of Cart_icon" class = 'cart'/></a>                 
+                    <a href="{% url 'rango:buyer_my_account' %}"><img src="{% static 'images/user_icon.png' %}" alt="Picture of User_icon" /></a>
+                </div> 
 
             {% else %}
-
-                <div>
-                    <a href="{% url 'rango:logout' %}">Logout</a>
-                </div>
-
-                <div>
-                    <a href="{% url 'rango:seller_my_account' %}"><img src="{% static 'images/user_icon.png' %}" alt="Picture of User_icon" /></a> 
+                <div class="user_s">
+                    <div class="logout">
+                    <a href="{% url 'rango:logout' %}" >logout</a>
+                    </div>
+                        <a href="{% url 'rango:seller_my_account' %}"><img src="{% static 'images/user_icon.png' %}" alt="Picture of User_icon" /></a> 
                 </div>
             {% endif %}
         {% else %}
-            <div>
-                <a href="{% url 'rango:login' %}">login</a>
-                <a href="{% url 'rango:register' %}">register</a>
+            <div class="notuser">
+                <div class="button_login"><a href="{% url 'rango:login' %}" >login</a></div>
+                <div class="button_reg"><a href="{% url 'rango:register' %}">register</a></div>          
             </div>
         {% endif %}
-    </div>
+    </div> -->
 
     {% block userbase_body_block %}
     {% endblock %}

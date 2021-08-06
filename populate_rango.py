@@ -4,7 +4,7 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE',
 
 import django
 django.setup()
-from rango.models import Category, Collection, Page, Product
+from rango.models import Category, Product, Cart
 
 import time
 
@@ -62,12 +62,18 @@ def populate():
             'c5': {'products': groceries, 'name':'Groceries','sales': 797, 'picture' : ci+'c5.png'} 
         	}
 
+    carts = {'Judith_Garvey':['Lipstick','Dress','Candy'],
+             'Hannah_Matthews':['Computer','Jacket','Phone']
+            }
 
     for cat, cat_data in cats.items():
         c = add_category(cat, cat_data['name'], cat_data['sales'], cat_data['picture'])
         for p in cat_data['products']:
           add_product(c, p['id'], p['name'], p['sales'], p['price'],p['picture'],p['description'])
  
+    for buyer, products in carts.items():
+        for p in products:
+          add_product_to_cart(buyer,p)
 
     # Print out the categories we have added.
     for c in Category.objects.all():
@@ -93,10 +99,10 @@ def add_category(id,name, sales, picture):
     return c
 
 
-def add_collection(buyer_name,product_name):
-    c = Collection.objects.get_or_create(buyer_name=buyer_name,product_name=product_name)[0]
-    c.save()
-    return c
+def add_product_to_cart(buyer_name, product_name):
+  ptc = Cart(buyer_name=buyer_name,product_name=product_name)
+  ptc.save()
+  return ptc
 
 
 
@@ -104,12 +110,8 @@ def add_collection(buyer_name,product_name):
 # Start execution here!
 if __name__ == '__main__':
   print('Starting Rango population script...')
-  add_collection('Hannah_Matthews','Computer')
-  add_collection('Hannah_Matthews','Jeans')
-  add_collection('Hannah_Matthews','Toothbrush')
-  add_collection('Hannah_Matthews','Shampoo')
-  add_collection('Judith Garvey','Lipstick')
-  add_collection('Judith Garvey','Dress')
-  add_collection('Judith Garvey','Candy')
-  add_collection('Judith Garvey','Phone')
+  
   populate()
+
+
+

@@ -6,15 +6,17 @@
 {% endblock %}
 
 {% block buyerbase_body_block %}
- 
-    <div>
-        User Name : {{user.username}}<br />
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/payment.css' %}" type="text/css" media ='all'>
+    <div class = 'userinfo'>
+        <a>AAAA</a>
+        <!-- User Name : {{user.username}}<br />
         Email : {{user.email}}<br />
         Address : {{user.userprofile.address}}<br />
-        Price : ￡ 200<br />
+        Price : ￡ 200<br /> -->
     </div>
 
-    <div>
+    <div class = 'card'>
         Card Number : <input type="text" /><br />
         CVV: <input type="text"  /><br />
         Phone Number : <input type="text"  /><br />

@@ -1,36 +1,36 @@
-{% extends 'rango/userbase.html' %}
+{% extends 'rango/seller_base.html' %}
 {% load staticfiles %}
 
 {% block title_block %}
-    Homepage
+    My Account
 {% endblock %}
 
-{% block userbase_body_block %}
+{% block seller_base_body_block %}
+<meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/account.css' %}" type="text/css" media ='all'>
  
-    <div>
-        <span>Profile : </span> <img src="{{ MEDIA_URL }}{{user.userprofile.picture}}" alt="Picture of Buyer" />
+    <div class="userprofile">
+        <img src="{{ MEDIA_URL }}{{user.userprofile.picture}}" alt="Picture of Buyer" class="uimg"/>
     </div>
 
-    <div>
-        <span>Username : </span> <span>{{user.username}}</span><br/>
-        <span>Email : </span> <span>{{user.email}}</span> <br/>
-        <span>Address : </span> <span>{{user.userprofile.address}}</span> 
+    <div class="br1">
+        <a></a>
     </div>
 
-    <div>
-        <span>User Type : </span> <span>{{user.userprofile.usertype}}</span> 
+    <div class="uname">
+        <ul class="uea">
+            <li><a>Username:  {{user.username}}</a></li>
+            <li><a>Email:  {{user.email}}</a></li>
+            <li><a>Address:  {{user.userprofile.address}}</a></li>
+            </ul>
     </div>
 
-    
-    <hr />
-
-    <div>
-        <ul>
-            <li><a href="{% url 'rango:seller_my_account' %}">My Account</a></li>
-            <li><a href="{% url 'rango:upload_product' %}">Upload Product</a></li>
-            <li><a href="{% url 'rango:remove_product' %}">Remove Product</a></li>
-            <li><a href="{% url 'rango:products_and_sales' %}">Products And Sales</a></li>
-        </ul>
+    <div class="br2">
+        <a></a>
     </div>
-    
+
+    <div class="utype">
+        User Type:  {{user.userprofile.usertype}}
+    </div>
+
 {% endblock %}

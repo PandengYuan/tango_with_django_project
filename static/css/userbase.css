@@ -1,0 +1,238 @@
+/* .search{
+    position:absolute;
+    top:-10px;
+    left:100px;
+}
+
+.searchinput{
+    position:absolute;
+    top:-10px;
+    left:10px;
+    width:450px;
+    height:30px;
+    border-radius:12px;
+    border:1px;
+}
+
+.searchbutton{
+    position:absolute;
+    font-size:16px;
+    color:white;
+    top:-8px;
+    left:480px;
+   
+} */
+
+/* .notuser{
+    position:absolute;
+    top:0px;
+    right:0px;
+}
+.button_login{
+    position:absolute;
+    right:200px;
+    top:25px;
+    border:1px solid black;
+    border-radius:15px;
+    background-color:rgb(248, 212, 9);
+    width:85px;
+    height:30px;  
+}
+.logintxt{
+    position:relative;
+    top:2px;
+    left:25px;
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: italic;
+    color:black;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+.button_reg{
+  
+    position:absolute;
+    right:100px;
+    top:25px;
+    border:1px solid black;
+    border-radius:15px;
+    background-color:rgb(248, 212, 9);
+    width:85px;
+    height:30px;
+    display: inline-block;
+}
+.registertxt{
+    position:relative;
+    top:2px;
+    left:15px;
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: italic;
+    color:black;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.user_b{
+    position:absolute;
+    right:42px;
+    top:30px;
+} 
+.logout{
+    position:absolute;
+    right:100px;
+    top:-5px;
+    border:1px solid black;
+    border-radius:15px;
+    background-color:rgb(248, 212, 9);
+    width:85px;
+    height:30px;
+    display: inline-block;
+
+}
+.logouttxt{
+    position:relative;
+    top:2px;
+    left:20px;
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: italic;
+    color:black;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+img{
+    width: 30px;
+    height:40px;
+}
+.cart{
+    position:relative;
+    bottom:8px;
+    right:170px;
+   
+}
+.myaccount{
+    position:relative;
+    bottom:8px;
+    right:30px;
+}
+.user_s{
+    position:absolute;
+    right:42px;
+    top:30px;
+} */
+
+
+
+
+/* .search{
+    position:fixed;
+    top:-10px;
+    left:80px;
+    }
+    
+.searchinput{
+    position:fixed;
+    top:35px;
+    left:480px;
+    width:400px;
+    height:30px;
+    border-radius:12px;
+    border:1px;
+}
+.searchbutton{
+    position:fixed;
+    left:900px;
+    font-size:16px;
+    color:white;
+    top:40px;
+    
+}
+    
+.button_login {
+    background-color: #c1ac59; 
+    color: #6f6d6d;
+    padding: 13px 40px;
+    padding-left: 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 25px;
+    border: 1px solid black;
+    position:relative;
+    right:15px;
+    color:white;
+    font-size: 16px;
+    font-weight: bold;
+     padding-left:40px;
+     
+}
+.button_reg {
+    background-color: #c1ac59; 
+    color: rgb(104, 98, 98);
+    padding: 13px 40px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 25px;
+    border: 1px solid black;
+    font-size: 16px;
+    font-weight: bold;
+    padding-left:25px;
+
+}
+
+.logout{
+    background-color: #c1ac59; 
+    color: #6f6d6d;
+    padding: 13px 40px;
+    padding-left: 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 25px;
+    border: 1px solid black;
+    position:fixed;
+    right:85px;
+    top:-5px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+a:link,a:visited{
+    color:black;
+}
+img {
+    width: 40px;
+    height:40px;
+    margin-right:20px;
+
+}
+.cart{
+    position:fixed;
+    bottom:0px;
+    right:160px;
+   
+}
+.notuser{
+    position:fixed;
+    right:42px;
+    top:20px;
+}
+.user_s{
+    position:fixed;
+    right:42px;
+    top:25px;
+}
+.user_b{
+    position:fixed;
+    right:42px;
+    top:30px;
+   
+} */

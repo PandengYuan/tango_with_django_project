@@ -1,1 +1,27 @@
-remove_product
+{% extends 'rango/seller_base.html' %}
+{% load staticfiles %}
+
+{% block title_block %}
+    Remove Product
+{% endblock %}
+
+{% block seller_base_body_block %}
+    
+   <div>
+        {% for p in products %}
+        <li>
+            <input type="checkbox"  checkbox="checkbox"/>
+            <a href="{% url 'rango:show_product' p.slug %}"> <img src="{{ MEDIA_URL }}{{ p.picture}}" alt="Picture of Product" />  </a><br/>
+            <a href="{% url 'rango:show_product' p.slug %}">{{ p.name }}</a><br/>
+            <a href="{% url 'rango:show_product' p.slug %}">{{ p.description }}</a><br/>
+            <span>Price : ￡ {{p.price}}</span><br/>
+        </li>
+        {% endfor %}
+
+        <div>
+            <input type="submit" value="Confirm and Remove" />
+        </div>
+
+   </div>
+
+{% endblock %}

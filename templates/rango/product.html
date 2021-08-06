@@ -3,31 +3,35 @@
 {% load staticfiles %}
 
 {% block title_block %}
-    {% if category %}
-        {{ category.name }}
+    {% if product %}
+        {{ product.name }}
     {% else %}
-        Unknown Category
+        Unknown Product
     {% endif %}
 {% endblock %}
 
 {% block userbase_body_block %}
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/product.css' %}" type="text/css" media ='all'>
     {% if product %}
-        <div>
-            <img src="{{ MEDIA_URL }}{{ product.picture}}" alt="Picture of Product" /><br/>
-            <span>Name : {{ product.name }}</span><br/>
-            <input type="submit" value="Collect" /><br/>
+        <div class="product"> 
+            <img src="{{ MEDIA_URL }}{{ product.picture}}" alt="Picture of Product" class = 'productimg'/><br/>
+            <span class = 'pname'>{{ product.name }}</span><br/>
+          
 
-            <span>Description : {{product.description}}</span><br/>
-            <span>price : ￡ {{product.price}}</span><br/>
+            <div class = 'pd'> <span class = 'pdes'> {{product.description}}</span><br/></div>
+            <span class = 'pprice'>￡ {{product.price}}</span><br/>
 
-            <input type="submit" value="Add a review" />
-            <input type="text" name="review" value="" size="80" height="40" />
-            <input type="submit" value="Submit Review" /><br/>
+            
+            <!-- <input type="text" name="review" value="" size="80" height="40" class = 'previewin'/>
+            <div class='r2'><input type="submit" value="Submit Review" class = 'previewsub'/><br/></div> -->
 
-            <img src="{% static 'images/minus.png' %}" alt="Picture of Minus_icon" /> 
-            <span>Quantity : </span>
-            <img src="{% static 'images/plus.png' %}" alt="Picture of Plus_icon" /> 
-            <input type="submit" value="Add to Basket" /> <input type="submit" value="Buy Now" />
+            <!-- <img src="{% static 'images/minus.png' %}" alt="Picture of Minus_icon" class = 'img1'/> 
+            <span class ='quality'>Quantity</span>
+            <img src="{% static 'images/plus.png' %}" alt="Picture of Plus_icon" class = 'img2'/>  -->
+
+            <div class='adddiv'><a  class = 'add'> Add to Cart</div>
+            <div class='buydiv'><a href="{% url 'rango:payment' %}" class = 'buy'>Buy Now</a></div>
 
         </div>
     {% else %}

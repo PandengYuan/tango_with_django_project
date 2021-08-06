@@ -1,5 +1,4 @@
-<!-- <style>
- #upload_product_form{
+#upload_product_form{
     position:absolute;
     top:150px;
     left:500px;
@@ -63,34 +62,3 @@
     padding-left:25px;
     margin-top:20px;
  }
-
-</style> -->
-{% extends 'rango/seller_base.html' %}
-{% load staticfiles %}
-
-{% block title_block %}
-    Upload Product
-{% endblock %}
-
-{% block seller_base_body_block %}
-<meta charset="UTF-8">
-    <link rel="stylesheet" href="{% static 'css/upload_product.css' %}" type="text/css" media ='all'>
-    <form id="upload_product_form" method="post" action="{% url 'rango:upload_product' %}" enctype="multipart/form-data">
-        {% csrf_token %}
-        {% for hidden in form.hidden_fields %}
-           <div class="product">
-               <a id="content">{{ hidden }}<br/></a>
-            </div> 
-        {% endfor %}
-        {% for field in form.visible_fields %}
-        <div class="helptext">
-            {{ field.errors }}
-            {{ field.help_text }}
-           {{ field }}
-        </div>
-            
-        {% endfor %}
-        <input type="submit" id="submit" value="Upload" />
-    </form>
-
-{% endblock %}

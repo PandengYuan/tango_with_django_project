@@ -1,0 +1,82 @@
+.userprofile{
+    position:absolute;
+    top:150px;
+    left:780px;
+    display:block;
+
+}
+img.uimg{
+    width:100px;
+    height:100px;
+    border-radius: 50px;
+}
+.uname{
+    position:absolute;
+    top:400px;
+    left:670px;
+}
+.uea{
+    position:absolute;
+    top:400px;
+    left:670px;
+    margin: 0;
+    padding: 0;
+    width: 332px;
+    position: fixed;
+    font-size:20px;
+    color: #000;
+    font-weight: bold;
+    font-style:oblique;
+}
+.uea li{
+
+    text-align: center;
+    list-style: none;
+    justify-content: center;
+    margin-bottom:15px;
+    
+}
+
+/* .uea li a {
+    font-size:25px;
+    color: #000;
+    font-weight: bold;
+} */
+
+.utype{
+    position:absolute;
+    top:700px;
+    left:780px;
+    font-size:20px;
+    color: #000;
+    font-weight: bold;
+    font-style:oblique;
+}
+
+.br1{
+    background-color: rgb(153,135,108,0.7);
+    position:absolute;
+    top:300px;
+    left:330px;
+    width:80%;
+    height:50px;
+}
+
+.br1 a{
+    color:#99876c;
+    width:80%;
+    height:50px;
+}
+
+.br2{
+    background-color: rgb(153,135,108,0.7);
+    position:absolute;
+    top:600px;
+    left:330px;
+    width:80%;
+    height:50px;
+}
+
+.br2 a{
+    color:#99876c
+}
